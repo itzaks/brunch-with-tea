@@ -10,11 +10,8 @@ class Layout extends Backbone.View
   elements: page: ".layout-page"
   subscriptions: 'page:open': 'open_page'
   open_page: (page_name)->
-    try
-      Page = require "views/#{ page_name }"
-    page = new Page()
-    console.log page_name, page
-    @$page.html page.render().el if Page
+    try Page = require "views/#{ page_name }"
+    @$page.html new Page().render().el if Page
 
 class Application
   constructor: ->
